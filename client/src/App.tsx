@@ -21,8 +21,8 @@ function App() {
     <div>
       <h1>B-Store</h1>
       <ul>
-        {products.map((item, index) => (
-          <li key={index}>
+        {products.map((item) => (
+          <li key={item.name}>
             {item.name} - {item.price}
           </li>
         ))}
