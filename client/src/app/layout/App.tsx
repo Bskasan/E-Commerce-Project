@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Product } from "./misc/product";
+import { Product } from "../misc/product";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -11,8 +11,7 @@ function App() {
   }, [products]);
 
   function addProduct() {
-    //! Taking all members of products and adding a new member to the end of the array
-    setProducts([...products, { name: "Product3", price: 300 }]);
+    setProducts([...products, { title: "Product3", price: 300 } as Product]);
   }
 
   return (
