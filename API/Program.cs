@@ -31,4 +31,18 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Create a scoper and store it in a variable
+var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
+var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+try
+{
+    context.Database.Migrate();
+    DbInitializer.Initialize(context);
+}
+catch (System.Exception ex)
+{
+    logger.LogError(ex, "An error occurred while migrating or initializing the database.");
+}
+
 app.Run();
